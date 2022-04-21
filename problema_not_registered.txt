@@ -1,0 +1,62 @@
+Something bad has happened.
+
+Airflow is used by many users, and it is very likely that others had similar problems and you can easily find
+a solution to your problem.
+
+Consider following these steps:
+
+  * gather the relevant information (detailed logs with errors, reproduction steps, details of your deployment)
+
+  * find similar issues using:
+     * GitHub Discussions
+     * GitHub Issues
+     * Stack Overflow
+     * the usual search engine you use on a daily basis
+
+  * if you run Airflow on a Managed Service, consider opening an issue using the service support channels
+
+  * if you tried and have difficulty with diagnosing and fixing the problem yourself, consider creating a bug report.
+    Make sure however, to include all relevant details and results of your investigation so far.
+
+Python version: 3.7.13
+Airflow version: 2.2.5
+Node: d76d3776aad7
+-------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/airflow/.local/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/airflow/.local/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/airflow/.local/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/airflow/.local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/airflow/.local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/www/auth.py", line 51, in decorated
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/www/decorators.py", line 108, in view_func
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/www/decorators.py", line 71, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 70, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/www/views.py", line 2321, in tree
+    dag = current_app.dag_bag.get_dag(dag_id)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 70, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 186, in get_dag
+    self._add_dag_from_db(dag_id=dag_id, session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 261, in _add_dag_from_db
+    dag = row.dag
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/serialized_dag.py", line 180, in dag
+    dag = SerializedDAG.from_dict(self.data)  # type: Any
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/serialization/serialized_objects.py", line 951, in from_dict
+    return cls.deserialize_dag(serialized_obj['dag'])
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/serialization/serialized_objects.py", line 877, in deserialize_dag
+    v = _decode_timetable(v)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/serialization/serialized_objects.py", line 167, in _decode_timetable
+    raise _TimetableNotRegistered(importable_string)
+airflow.serialization.serialized_objects._TimetableNotRegistered: Timetable class 'monday_friday.BeforeWorkdayTimetable' is not registered
