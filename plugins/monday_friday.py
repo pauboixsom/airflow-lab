@@ -18,7 +18,7 @@ class BeforeWorkdayTimetable(Timetable):
             delta = timedelta(days=days_since_friday)
         else:  # Otherwise the interval is yesterday.
             delta = timedelta(days=1)
-        start = DateTime.combine((run_after - delta).date(), Time(5,0,0)).replace(tzinfo=UTC)
+        start = DateTime.combine((run_after - delta).date(), Time(5,0,0)).replace(tzinfo=UTC) #restem delta perque tornem a fer el ultim que s'ha fet?
         return DataInterval(start=start, end=(start + timedelta(days=1)))
 
     def next_dagrun_info(

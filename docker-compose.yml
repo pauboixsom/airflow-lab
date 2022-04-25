@@ -62,7 +62,7 @@ x-airflow-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - ./includes:/opt/airflow/includes
-    - /var/run/docker.sock:/var/run/docker.sock #pel docker operators
+    - /var/run/docker.sock:/var/run/docker.sock #pels docker operators
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on

@@ -1,0 +1,2 @@
+docker build -t stock_image .
+docker tag stock_image:latest stock_image:v1.0.0
